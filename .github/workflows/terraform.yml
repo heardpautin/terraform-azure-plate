@@ -13,24 +13,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: 📥 Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set Up Terraform
+      - name: ⚙️ Set Up Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: "1.5.0"
 
-      - name: Terraform Init
+      - name: 🔐 Azure Login (Authenticate Terraform)
+        run: |
+          az login --service-principal \
+            --username "${{ secrets.ARM_CLIENT_ID }}" \
+            --password "${{ secrets.ARM_CLIENT_SECRET }}" \
+            --tenant "${{ secrets.ARM_TENANT_ID }}"
+
+      - name: 🏗 Terraform Init
         run: terraform init
 
-      - name: Terraform Validate
+      - name: 🔍 Terraform Validate
         run: terraform validate
 
-      - name: Terraform Plan
+      - name: 📝 Terraform Plan
         run: terraform plan -out=tfplan
 
-      - name: Terraform Apply
+      - name: 🚀 Terraform Apply (Deploy Infrastructure)
         if: github.event_name == 'push'
         run: terraform apply -auto-approve tfplan
 
