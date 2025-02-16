@@ -6,7 +6,7 @@ provider "azurerm" {
 
 # Create Resource Group
 resource "azurerm_resource_group" "example" {
-  name     = "MyTestRG"
+  name     = "TerraformNewRG"  # New name to avoid conflicts
   location = "East US"
 }
 
