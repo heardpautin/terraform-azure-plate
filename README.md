@@ -8,3 +8,4 @@ This project automates the deployment of an Azure Virtual Machine using Terrafor
 # Triggering GitHub Actions
 # Triggering GitHub Actions
 # Triggering GitHub Actions
+Triggering GitHub Actions
