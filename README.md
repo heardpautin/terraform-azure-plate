@@ -6,3 +6,4 @@
 This project automates the deployment of an Azure Virtual Machine using Terraform.
 # terraform-azure-plate
 # Triggering GitHub Actions
+# Triggering GitHub Actions
